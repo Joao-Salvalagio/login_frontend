@@ -15,3 +15,26 @@ botao.addEventListener('click', function(){
 }
 
 );
+
+//listar
+function listar(){
+    const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    let tabela = document.getElementById('listaUsuariosCadastrados');
+
+    listaUsuarios.forEach((objeto,index) => {
+        let linha = document.getElementById('tr');
+        linha.innerHTML = `
+            <td>${objeto.usuario}</td>
+            <td>${objeto.senha}</td>
+            <td>
+                <button>Editar</button>
+                <button>Remover</button>
+            </td>  
+        `;    
+
+        tabela.appendChild(linha);
+    });
+}
+
+listar();
+
