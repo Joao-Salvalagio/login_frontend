@@ -5,27 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
-    <div class="cadastro">
-        <input type="text" id="usuario" placeholder="Usuario">
-        <input type="text" id="senha" placeholder="Senha">
-        <button id="btnCadastrar">Cadastrar</button>
-    </div>
-    <div class="listaUsuarios">
-        <table>
-            <thead>
-                <tr>
-                    <td>Usuario</td>
-                    <td>Senha</td>
-                    <td>Operações</td>
-                </tr>
-            </thead>
-            <tbody id="listaUsuariosCadastrados">
-            </tbody>
-        </table>
+    <div class="container">
+        <div class="cadastro">
+            <input type="text" id="usuario" placeholder="Usuario">
+            <input type="text" id="senha" placeholder="Senha">
+            <button id="btnCadastrar">Cadastrar</button>
+        </div>
+        <div class="listaUsuarios">
+            <table>
+                <thead>
+                    <tr>
+                        <td>Usuario</td>
+                        <td>Senha</td>
+                        <td>Operações</td>
+                    </tr>
+                </thead>
+                <tbody id="listaUsuariosCadastrados">
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="js/cadastro.js"></script>
 </body>
