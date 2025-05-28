@@ -1,9 +1,9 @@
-// para fazer cadastro
-const botao = document.getElementById("btnCadastrar");
+// fazer o cadastro
+const botao = document.getElementById('btnCadastrar');
 const listaUsuariosCadastrados = [];
 
-//cadastrar
-botao.addEventListener('click', function(){
+// cadastrar
+botao.addEventListener('click', function (){
     const objUsuario = {
         usuario: document.getElementById('usuario').value,
         senha: document.getElementById('senha').value
@@ -11,7 +11,7 @@ botao.addEventListener('click', function(){
     listaUsuariosCadastrados.push(objUsuario);
     const listaJson = JSON.stringify(listaUsuariosCadastrados);
     localStorage.setItem('usuarios', listaJson);
-    
+    listar();
 }
 
 );
@@ -20,21 +20,19 @@ botao.addEventListener('click', function(){
 function listar(){
     const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     let tabela = document.getElementById('listaUsuariosCadastrados');
-
-    listaUsuarios.forEach((objeto,index) => {
-        let linha = document.getElementById('tr');
+    tabela.innerHTML = "";
+    listaUsuarios.forEach((objeto, index) => {
+        let linha = document.createElement('tr');
         linha.innerHTML = `
             <td>${objeto.usuario}</td>
             <td>${objeto.senha}</td>
             <td>
                 <button>Editar</button>
                 <button>Remover</button>
-            </td>  
-        `;    
-
+            </td>
+        `;
         tabela.appendChild(linha);
     });
 }
 
 listar();
-
