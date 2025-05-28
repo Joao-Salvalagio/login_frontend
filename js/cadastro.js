@@ -1,9 +1,10 @@
 // fazer o cadastro
 const botao = document.getElementById('btnCadastrar');
-const listaUsuariosCadastrados = [];
+//const listaUsuariosCadastrados = [];
 
 // cadastrar
 botao.addEventListener('click', function (){
+    const listaUsuariosCadastrados = JSON.parse(localStorage.getItem("usuarios")) || [];
     const objUsuario = {
         usuario: document.getElementById('usuario').value,
         senha: document.getElementById('senha').value
