@@ -28,18 +28,22 @@ function listar(){
             <td>${objeto.usuario}</td>
             <td>${objeto.senha}</td>
             <td>
-                <button onclick="editarUsuario(${index})"
-                >Editar</button>
-                <button onclik="removerUsuario(${index})"
-                >Remover</button>
+                <button onclick="editarUsuario(${index})">Editar</button>
+                <button onclick="removerUsuario(${index})">Remover</button>
             </td>
         `;
         tabela.appendChild(linha);
     });
 }
 
-function excluirUsuario(index){
+function removerUsuario(index){
     const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    if(confirm("Voce realmente quer remover?")){
+        listaUsuarios.splice(index,1);
+        let listaJson = JSON.stringify(listaUsuarios);
+        localStorage.setItem("usuarios", listaJson);
+        listar();
+    }
 }
 
 listar();
