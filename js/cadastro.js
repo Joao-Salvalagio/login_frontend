@@ -20,7 +20,7 @@ botao.addEventListener('click', function (){
         //criação
         listaUsuariosCadastrados.push(objUsuario); //cria um novo cadastro
     }
-
+    //salva no localStorage
     const listaJson = JSON.stringify(listaUsuariosCadastrados);
     localStorage.setItem('usuarios', listaJson);
     listar();
