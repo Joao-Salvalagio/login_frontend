@@ -1,15 +1,26 @@
-// fazer o cadastro
+//fazer o cadastro
 const botao = document.getElementById('btnCadastrar');
 //const listaUsuariosCadastrados = [];
 
-// cadastrar
+//cadastrar
 botao.addEventListener('click', function (){
     const listaUsuariosCadastrados = JSON.parse(localStorage.getItem("usuarios")) || [];
     const objUsuario = {
         usuario: document.getElementById('usuario').value,
         senha: document.getElementById('senha').value
     };
-    listaUsuariosCadastrados.push(objUsuario);
+    
+    let indice = document.getElementById('indice').value;
+    //verifica se o indice esta vazio, se estiver vazio, significa que é um novo cadastro, se não, é uma edição.
+    if(indice !== ""){
+        //edição
+        listaUsuariosCadastrados[indice] = objUsuario;
+        document.getElementById('indice').value = ""; //limpa o indice após a edição
+    }else{
+        //criação
+        listaUsuariosCadastrados.push(objUsuario); //cria um novo cadastro
+    }
+
     const listaJson = JSON.stringify(listaUsuariosCadastrados);
     localStorage.setItem('usuarios', listaJson);
     listar();
@@ -36,6 +47,7 @@ function listar(){
     });
 }
 
+//remover usuario
 function removerUsuario(index){
     const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
     if(confirm("Voce realmente quer remover?")){
@@ -44,6 +56,15 @@ function removerUsuario(index){
         localStorage.setItem("usuarios", listaJson);
         listar();
     }
+}
+
+//editar usuario
+function editarUsuario(index){
+    const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    let usuarioEditar = listaUsuarios[index];
+    document.getElementById('usuario').value = usuarioEditar.usuario;
+    document.getElementById('senha').value = usuarioEditar.senha;
+    document.getElementById('indice').value = index;
 }
 
 listar();
