@@ -1,6 +1,5 @@
 //fazer o cadastro
 const botao = document.getElementById('btnCadastrar');
-//const listaUsuariosCadastrados = [];
 
 //cadastrar
 botao.addEventListener('click', function (){
@@ -25,7 +24,6 @@ botao.addEventListener('click', function (){
     localStorage.setItem('usuarios', listaJson);
     listar();
 }
-
 );
 
 //listar
@@ -50,7 +48,7 @@ function listar(){
 //remover usuario
 function removerUsuario(index){
     const listaUsuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    if(confirm("Voce realmente quer remover?")){
+    if(confirm("Você realmente quer remover?")){
         listaUsuarios.splice(index,1);
         let listaJson = JSON.stringify(listaUsuarios);
         localStorage.setItem("usuarios", listaJson);
